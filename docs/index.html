@@ -134,6 +134,28 @@ h2{font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.04em;margin:
   .stat{border-right:0;border-bottom:1px solid var(--line)}
   h1{font-size:42px}
 }
+
+/* ── Contenido heredado del proyecto original, en clave sobria ── */
+.rich{max-width:78ch}
+.rich p{margin:0 0 14px;color:#c3d4da}
+.rich h3{margin:26px 0 10px;font-size:19px;letter-spacing:-.02em}
+.rich h4{margin:22px 0 8px;font-size:15px;letter-spacing:-.01em}
+.rich ul,.rich ol{margin:0 0 16px;padding-left:22px;color:#c3d4da}
+.rich li{margin:0 0 6px}
+.rich figure{margin:22px 0;border:1px solid var(--line);border-radius:16px;padding:10px;background:rgba(11,34,43,.5)}
+.rich figure img{width:100%;display:block;border-radius:10px}
+.rich figcaption{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:9px;line-height:1.5}
+.rich .table-wrap{overflow-x:auto;margin:18px 0;border:1px solid var(--line);border-radius:12px}
+.rich table{border-collapse:collapse;width:100%;font-size:13.5px}
+.rich th,.rich td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.rich th{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:rgba(11,34,43,.6)}
+.rich tr:last-child td{border-bottom:0}
+.rich pre{margin:18px 0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#04141a;overflow-x:auto;font-family:var(--mono);font-size:12px;line-height:1.6;color:#cfe3e8}
+.rich code{font-family:var(--mono);font-size:.92em}
+.rich .note{margin:18px 0;padding:13px 16px;border-left:2px solid var(--accent);background:rgba(42,157,143,.07);color:#c3d4da;font-size:14px}
+.rich .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0}
+.rich .card-grid .card{margin:0}
+
 </style>
 <link rel="stylesheet" href="assets/community.css?v=1">
 </head>
@@ -182,36 +204,52 @@ h2{font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.04em;margin:
   <a href="https://github.com/jmadasme/superfoto-unoq/tree/main/versions/superfoto-unoq" target="_blank" rel="noopener">Ver carpeta <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
 </article></div>
 </div></section>
-
-<section class="section tight"><div class="wrap">
-  <div class="section-head reveal"><div class="kicker">03 — Cómo se usa</div><h2>De la carpeta a la práctica.</h2></div>
-  <div class="timeline"><div class="step reveal"><div class="step-n">01</div><h4>Prepará la cámara</h4><p>Instalá IP Webcam en el teléfono y anotá la URL del stream MJPEG.</p></div><div class="step reveal"><div class="step-n">02</div><h4>Desplegá el servicio</h4><p>Copiá el proyecto a la UNO Q y arrancalo con scripts/servicio.sh.</p></div><div class="step reveal"><div class="step-n">03</div><h4>Lanzá una sesión</h4><p>Elegí fuente, duración, frames objetivo y escala desde la web o la API.</p></div><div class="step reveal"><div class="step-n">04</div><h4>Revisá el resultado</h4><p>Descargá la superfoto, la comparativa y la referencia de la sesión.</p></div></div>
-</div></section>
-
-<section class="section tight"><div class="wrap">
-  <div class="section-head reveal"><div class="kicker">04 — Decisiones</div><h2>Lo que lo hace distinto</h2></div>
-  <div class="features"><div class="feature reveal"><h4>Selección por calidad</h4><p>Nitidez, contraste, exposición y movimiento deciden qué frames entran.</p></div><div class="feature reveal"><h4>Alineación subpíxel</h4><p>ECC corrige el temblor del pulso y de la mano.</p></div><div class="feature reveal"><h4>Fusión acumulada</h4><p>Promedio ponderado con máscara de validez por píxel.</p></div><div class="feature reveal"><h4>Comparativa honesta</h4><p>Recorte 480×360 en la zona de más detalle, zoom 2× y ganancia medida.</p></div><div class="feature reveal"><h4>Aviso de desenfoque</h4><p>Si la fuente no tiene nitidez, lo dice en vez de prometer milagros.</p></div><div class="feature reveal"><h4>Sesiones completas</h4><p>PNG, JPG, miniatura, referencia, cobertura y métricas en JSON.</p></div></div>
-</div></section>
-
-<section class="section tight" id="stack"><div class="wrap">
-  <div class="section-head reveal"><div class="kicker">05 — Stack y arranque</div><h2>Con qué está construido</h2></div>
-  <div class="stack-grid">
-    <div class="reveal"><div class="chips"><span class="chip">Arduino UNO Q</span><span class="chip">Python</span><span class="chip">OpenCV</span><span class="chip">MJPEG</span><span class="chip">HTTP</span><span class="chip">UI web</span></div><div class="note"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span>La placa necesita OpenCV y una cámara en la misma red. Con poca luz o desenfoque la mejora es marginal: la comparativa lo muestra en lugar de disimularlo.</span></div></div>
-    <div class="terminal reveal"><div class="terminal-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><pre>git clone https://github.com/jmadasme/superfoto-unoq.git
-cd superfoto-unoq/versions/superfoto-unoq
-REMOTE_HOST=&lt;IP_DE_LA_UNO_Q&gt; scripts/deploy_unoq.sh
-# alternativa local, sin desplegar:
-./scripts/run_local.sh ip http://IP-DEL-TELEFONO:8080/video</pre></div>
-  </div>
-</div></section>
-
-<section class="section tight" id="docs"><div class="wrap">
-  <div class="section-head reveal"><div class="kicker">06 — Documentación</div><h2>Para usar y para entender.</h2><p class="section-sub">Cada documento está en el repositorio, versionado junto al código.</p></div>
-  <div class="docs"><a class="doc reveal" href="https://github.com/jmadasme/superfoto-unoq/blob/main/docs/datasheet.md" target="_blank" rel="noopener"><span class="tag">DATASHEET</span><h4>Manual de operación</h4><p>Instalación, configuración, uso y diagnóstico.</p></a><a class="doc reveal" href="https://github.com/jmadasme/superfoto-unoq/blob/main/docs/developer.md" target="_blank" rel="noopener"><span class="tag">DEVELOPER</span><h4>Guía de código</h4><p>Arquitectura, módulos, contratos y extensión.</p></a><a class="doc reveal" href="https://github.com/jmadasme/superfoto-unoq/blob/main/docs/REFERENCES.md" target="_blank" rel="noopener"><span class="tag">REFERENCES</span><h4>Referencias</h4><p>Estándares, librerías y fuentes oficiales.</p></a><a class="doc reveal" href="https://github.com/jmadasme/superfoto-unoq/blob/main/docs/BITACORA.md" target="_blank" rel="noopener"><span class="tag">BITÁCORA</span><h4>Decisiones y pruebas</h4><p>Qué se intentó, qué falló y por qué se cambió.</p></a></div>
-</div></section>
-
-<section class="section tight"><div class="wrap"><div class="note reveal"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span><strong>Preservación:</strong> las versiones se copiaron sin <code>.git</code>, <code>node_modules</code>, entornos virtuales, compilados ni bases de datos. Los tokens y claves detectados fueron redactados; las plantillas <code>.example</code> se conservan. Las limitaciones conocidas están en la documentación, no escondidas.</span></div></div></section>
-
+<section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">01 — La idea</div><h2>El problema y la solución</h2><p class="section-sub">Qué resuelve y por qué está construido así.</p></div><div class="rich reveal"><div class="card-grid">
+<div class="card"><h3>El problema</h3><div><div></div><p>Una cámara de celular o de microscopio está limitada por el sensor y la difracción: al ampliar el zoom solo ves el mismo píxel agrandado, con ruido y sin detalle nuevo. El detalle fino se pierde entre píxeles y no se recupera de un único frame.</p></div></div>
+<div class="card"><h3>La solución</h3><div><div></div><p>Capturar miles de frames con micro-desplazamiento subpíxel y fusionarlos: descartar los borrosos (lucky imaging), alinear cada frame a fracciones de píxel y acumular la señal real para recuperar hasta ~2× de resolución lineal (4× en píxeles).</p></div></div>
+</div></div></div></section>
+<section class="section"><div class="wrap"><div class="section-head reveal"><div class="kicker">02 — El recorrido</div><h2>Cómo funciona, paso a paso</h2><p class="section-sub">El recorrido desde el código hasta el resultado.</p></div><div class="rich reveal"><div class="timeline">
+<div class="step"><div class="step-n">01</div><h4>Captura</h4><div><p>Recibe frames de IP Webcam (MJPEG), archivo de video, webcam USB o carpeta de imágenes. En la UNO Q, el descubrimiento por sysfs descarta los decoders Venus (/dev/video0/video1) que no son cámaras.</p></div></div>
+<div class="step"><div class="step-n">02</div><h4>Gate de calidad (lucky imaging)</h4><div><p>Varianza del Laplaciano sobre el ROI central (50%): un umbral adaptativo por percentil descarta los frames borrosos y se queda solo con los nítidos.</p></div></div>
+<div class="step"><div class="step-n">03</div><h4>Alineación subpíxel</h4><div><p>phaseCorrelate para el desplazamiento grueso + refinamiento ECC hasta un error medio de ~0.04 px. Sin alinear, la fusión emborrona en lugar de mejorar.</p></div></div>
+<div class="step"><div class="step-n">04</div><h4>Fusión drizzle</h4><div><p>Acumulación en una rejilla fina con kernel Lanczos4 y pesos por nitidez + exposición. Trabaja en uint16 para no saturar la suma de señal.</p></div></div>
+<div class="step"><div class="step-n">05</div><h4>Refinamiento IBP</h4><div><p>Iterative back-projection: proyecta el resultado a la resolución original, compara con cada frame y corrige el error de forma iterativa.</p></div></div>
+<div class="step"><div class="step-n">06</div><h4>Deconvolución Richardson-Lucy</h4><div><p>Desconvoluciona con una PSF gaussiana (σ=0.6, 15 iteraciones) solo sobre la luminancia en espacio Lab, para no alterar el color.</p></div></div>
+</div></div></div></section>
+<section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">03 — Bajo el capó</div><h2>Cómo está construido</h2><p class="section-sub">Una vista de los componentes principales y cómo se conectan.</p></div><div class="rich reveal"><figure><img src="img/compare_stoma.jpg" alt="Prueba real: un frame bicúbico vs. fusión de 186 frames" loading="lazy"><figcaption>Prueba real de punta a punta: un frame (bicúbico 2×) vs. fusión SuperFoto de 186 frames.</figcaption></figure>
+<div class="card-grid">
+<div class="card"><h3>Fuentes</h3><div><p>IP Webcam (MJPEG), video, webcam USB o carpeta. En la UNO Q, sysfs descarta los decoders Venus que no son cámaras.</p></div></div>
+<div class="card"><h3>Servidor HTTP</h3><div><p>stdlib http.server + threading en el puerto 8010. API REST de sesiones y un único worker activo a la vez.</p></div></div>
+<div class="card"><h3>Pipeline SR</h3><div><p>Gate de calidad → alineación subpíxel → fusión drizzle → IBP → deconvolución Richardson-Lucy.</p></div></div>
+</div></div></div></section>
+<section class="section"><div class="wrap"><div class="section-head reveal"><div class="kicker">04 — Lo que lo hace distinto</div><h2>Decisiones de ingeniería</h2><p class="section-sub">Decisiones que hacen que el proyecto sea útil, mantenible y honesto.</p></div><div class="rich reveal"><div class="features">
+<div class="feature"><h3>Límites honestos</h3><div><p>Hasta ~2× lineal (4× en píxeles). No recupera difracción ni inventa detalle: el zoom 8× es digital y está documentado.</p></div></div>
+<div class="feature"><h3>Lucky imaging adaptativo</h3><div><p>El umbral de nitidez sale de un percentil, no de una constante: se adapta a cada sesión sin tocar parámetros.</p></div></div>
+<div class="feature"><h3>Fusión en uint16</h3><div><p>La acumulación drizzle suma señal en uint16 y lleva un mapa de coverage por píxel para saber dónde hubo datos reales.</p></div></div>
+<div class="feature"><h3>Sin pip ni frameworks</h3><div><p>Solo stdlib http.server + threading + OpenCV + NumPy. Se instala con apt en la UNO Q: nada de pip, Flask ni FastAPI.</p></div></div>
+<div class="feature"><h3>Despliegue sin sudo</h3><div><p>tar + ssh (puerto 2222), preserva data/sessions entre deploys y arranca por cron @reboot. El puerto 8000 queda reservado.</p></div></div>
+<div class="feature"><h3>105 pruebas</h3><div><p>pytest cubre MJPEG, reconexión, gate, alineación, fusión uint16, memoria, storage atómico, API, CLI, sketch y UI sin innerHTML.</p></div></div>
+</div></div></div></section>
+<section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">05 — Resultados medidos</div><h2>Lo que se mide, se verifica</h2><p class="section-sub">Sin "magia": ganancias reales y límites claros, medidos sobre la placa.</p></div><div class="rich reveal"><figure><img src="img/compare_stoma_detail.jpg" alt="Detalle 1:1 de la superresolución" loading="lazy"><figcaption>Detalle 1:1 del estoma: bicúbico de un frame vs. SuperFoto de 186 frames.</figcaption></figure>
+<div class="card-grid">
+<div class="card"><h3>Métricas de referencia</h3><div><p>+6,47 dB PSNR (benchmark sintético)<br/>+5,31 dB en la UNO Q (400×300 → 800×600)<br/>SSIM +0,028<br/>487 frames vistos · 186 aceptados<br/>1920×1080 → 3840×2160 (8,3 MP)<br/>shift medio 0,66 px</p></div></div>
+</div></div></div></section>
+<section class="section"><div class="wrap"><div class="section-head reveal"><div class="kicker">06 — Stack y arranque</div><h2>Con qué está construido</h2><p class="section-sub">Tecnologías y herramientas que sostienen el proyecto.</p></div><div class="rich reveal"><p>Arduino UNO Q STM32U585 Debian 13 Python 3 OpenCV NumPy http.server pytest Sin pip ni frameworks web: stdlib + OpenCV + NumPy, instalables con apt en la UNO Q.</p>
+<p>bash — superfoto-unoq</p>
+<pre><span># En la UNO Q (o local): dependencias con apt, sin pip</span>
+<span>$</span> sudo apt install python3-opencv python3-numpy
+<span># Procesa un video local</span>
+<span>$</span> python3 scripts/process_video.py --input video.mp4 --scale 2.0
+<span># Despliega a la placa por ssh (puerto 2222, sin sudo)</span>
+<span>$</span> ./scripts/deploy_unoq.sh</pre></div></div></section>
+<section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">07 — Documentación</div><h2>Todo está escrito</h2><p class="section-sub">Cada decisión, cada límite y cada comando están documentados en el repositorio. Sin folletos: lo que funciona se muestra, lo que no, también.</p></div><div class="rich reveal"><div class="card-grid">
+<a class="card" href=""><h3>Guía completa</h3><p>Qué es, cómo funciona, instalación y límites.</p></a>
+<a class="card" href=""><h3>Manual de operación</h3><p>Requisitos, uso, parámetros y diagnóstico.</p></a>
+<a class="card" href=""><h3>Guía de código</h3><p>Arquitectura, módulos y extensión.</p></a>
+<a class="card" href=""><h3>Referencias</h3><p>Documentación externa y buenas prácticas.</p></a>
+<a class="card" href=""><h3>Operación sin sudo</h3><p>Start, stop, logs y arranque automático por cron.</p></a>
+<a class="card" href=""><h3>Límites y alcance</h3><p>Qué puede y qué no puede hacer el pipeline.</p></a>
+</div></div></div></section>
 <section class="cta"><div class="wrap"><div class="cta-box reveal">
   <div class="kicker">Siguiente paso</div><h2>¿Te animás?</h2>
   <p>Usá esta familia como base para superfoto uno q. Está documentada para que puedas entenderla, ejecutarla y continuarla sin adivinar.</p>
