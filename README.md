@@ -34,6 +34,56 @@ REMOTE_HOST=<IP_DE_LA_UNO_Q> scripts/deploy_unoq.sh
 
 La placa necesita OpenCV y una cámara en la misma red. Con poca luz o desenfoque la mejora es marginal: la comparativa lo muestra en lugar de disimularlo.
 
+<!-- ficha -->
+## Ficha de evaluación
+
+**Madurez global: 3.8/5**
+
+| Criterio | Nota | Evidencia |
+|---|---:|---|
+| Madurez | 4/5 | Servicio completo con 105 pruebas, auditoría aprobada y sesiones reales de 3840×2160 ejecutadas en la placa. |
+| Reproducibilidad | 3/5 | Requiere OpenCV, una fuente MJPEG accesible y los scripts de despliegue; el resultado depende de cámara y escena. |
+| Documentación | 4/5 | README extenso, bitácora con métricas, datasheet, guía de desarrollador y referencias sobre fusión multi-frame. |
+| Honestidad de límites | 5/5 | Publica PSNR y SSIM por sesión, la comparativa bicúbica y los casos donde la mejora es marginal. |
+| Valor demostrativo | 4/5 | Cuantifica la ganancia de la fusión: +6,47 dB en laboratorio y +5,31 dB en la placa. |
+| Facilidad de despliegue | 3/5 | Despliegue por script y ejecución local; sin autenticación, sin TLS y con una sola sesión activa. |
+
+Demostración sólida de superresolución multi-frame con métricas publicadas y límites explícitos. Sirve para aprender y evaluar fusión en hardware modesto; no para exponerla como servicio multiusuario.
+
+## Lo que no funcionó
+
+### superfoto-unoq — Fusión sin ganancia sobre el bicúbico
+
+La configuración inicial, basada solo en drizzle y promedio ponderado, daba 23,48 dB de PSNR, por debajo de los 24,34 dB de un único frame interpolado bicúbicamente. Se incorporó proyección iterativa de retroproyección con hasta 32 frames y Richardson-Lucy sobre luminancia; la misma escena subió a 30,81 dB y SSIM 0,9497.
+
+### superfoto-unoq — Escena en movimiento sin frames útiles
+
+En un video de 50 segundos con la cámara moviéndose se vieron 1250 frames y solo 7 pasaron el control de calidad, con desplazamiento medio de 10,2 px y cobertura insuficiente. En lugar de forzar la fusión se añadió un aviso de escena en movimiento cuando más del 50 % de las alineaciones falla, con un mínimo de 30 frames evaluados.
+
+### superfoto-unoq — Contador de drizzle saturado
+
+El acumulador de drizzle usaba uint8 y saturaba al sumar muchas exposiciones, lo que corrompía la media ponderada. Se migró a uint16 con tope de 65535 y se agregó una prueba de 400 frames que verifica que el contador no desborda. Es la incidencia I-001 de la bitácora.
+
+## Preguntas típicas
+
+**¿Sirve cualquier cámara?**
+
+Cualquier fuente MJPEG o webcam USB que OpenCV pueda abrir; el flujo probado es IP Webcam en Android.
+
+**¿Cuántos frames hacen falta?**
+
+Entre 10 y 30 suele ser el punto útil. Pasado ese número el costo de postproceso crece más que la mejora.
+
+**¿Aumenta la resolución real?**
+
+Mejora el detalle y baja el ruido, pero no reemplaza una óptica mejor. La ganancia se mide y se publica con cada sesión.
+
+**¿Dónde corre?**
+
+Todo en la UNO Q: captura, alineación, fusión y servicio web. No se envía nada a Internet.
+
+<!-- /ficha -->
+
 ## Documentación
 
 - [`docs/datasheet.md`](docs/datasheet.md) — instalación, operación y límites.
@@ -41,9 +91,9 @@ La placa necesita OpenCV y una cámara en la misma red. Con poca luz o desenfoqu
 - [`docs/REFERENCES.md`](docs/REFERENCES.md) — estándares, librerías y fuentes.
 - [`docs/index.html`](docs/index.html) — página del proyecto (GitHub Pages).
 
-## Alcance y honestidad
+## El proyecto en detalle
 
-## SuperFoto UNO Q
+### SuperFoto UNO Q
 
 **Superfotografía por fusión de miles de frames, corriendo en una Arduino UNO Q.**
 

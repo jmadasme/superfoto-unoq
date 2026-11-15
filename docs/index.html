@@ -156,6 +156,39 @@ h2{font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.04em;margin:
 .rich .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0}
 .rich .card-grid .card{margin:0}
 
+
+.rich h3{margin:26px 0 8px}
+.rich p{margin:0 0 14px;color:var(--muted);line-height:1.7}
+.fail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:6px}
+.fail{background:rgba(11,34,43,.55);border:1px solid var(--line);border-radius:14px;padding:18px}
+.fail .v{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--warm,#D6A86A)}
+.fail h3{font-size:16px;margin:8px 0 6px}
+.fail p{font-size:14px;margin:0;color:var(--muted)}
+.rating-head{display:flex;align-items:center;gap:20px;margin:6px 0 18px;padding:18px 20px;border:1px solid var(--line);border-radius:16px;background:rgba(11,34,43,.55)}
+.rating-avg{font-family:var(--mono);font-size:40px;line-height:1;color:var(--accent)}
+.rating-avg small{font-size:14px;color:var(--muted)}
+.rating-head p{margin:4px 0 0;font-size:14px;color:var(--muted);max-width:70ch}
+.rating{display:grid;gap:2px}
+.rating-row{display:grid;grid-template-columns:165px minmax(90px,1fr) 48px;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+.rating-row:last-child{border-bottom:0}
+.rating-name{font-size:13.5px;font-weight:600}
+.rating-bar{height:6px;border-radius:99px;background:rgba(148,190,200,.14);overflow:hidden}
+.rating-bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.rating-score{font-family:var(--mono);font-size:12.5px;color:var(--accent);text-align:right}
+.rating-note{grid-column:2/-1;font-size:12.5px;color:var(--muted);margin-top:-4px}
+.faq{display:grid;gap:0;margin-top:4px}
+.faq details{border-bottom:1px solid var(--line);padding:14px 0}
+.faq summary{cursor:pointer;font-weight:600;font-size:15px;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"+";display:inline-block;width:18px;color:var(--accent);font-family:var(--mono)}
+.faq details[open] summary::before{content:"–"}
+.faq p{margin:10px 0 0 18px;font-size:14px;color:var(--muted)}
+@media(max-width:720px){
+  .fail-grid{grid-template-columns:1fr}
+  .rating-head{flex-direction:column;align-items:flex-start}
+  .rating-row{grid-template-columns:120px 1fr 44px}
+}
+
 </style>
 <link rel="stylesheet" href="assets/community.css?v=1">
 </head>
@@ -188,15 +221,7 @@ h2{font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.04em;margin:
 
 <section class="stats"><div class="wrap stats-grid"><div class="stat"><div class="stat-num">1</div><div class="stat-label">versión</div></div><div class="stat"><div class="stat-num">1080p</div><div class="stat-label">entrada</div></div><div class="stat"><div class="stat-num">1620×2880</div><div class="stat-label">salida</div></div><div class="stat"><div class="stat-num">0</div><div class="stat-label">nube</div></div></div></section>
 
-<section class="section" id="proyecto"><div class="wrap">
-  <div class="section-head reveal"><div class="kicker">01 — El proyecto</div><h2>Qué resuelve</h2><p class="section-sub">Un servicio que toma decenas de frames de una cámara IP Webcam, descarta los movidos o quemados, alinea el resto con precisión subpíxel y los acumula para reducir ruido y ganar detalle real. La placa expone una interfaz web, una API y una CLI, y guarda cada sesión con su comparativa, su referencia y su cobertura de frames.</p></div>
-  <div class="two">
-    <div class="card reveal"><span class="tag">Problema</span><h3>El punto de partida</h3><p>Una cámara barata y un teléfono viejo entregan frames con ruido y poco detalle; subir la resolución por interpolación agranda la imagen pero no inventa información.</p></div>
-    <div class="card reveal"><span class="tag">Solución</span><h3>La propuesta</h3><p>Capturar muchos frames de la misma escena, quedarse con los mejores y fusionarlos: el ruido se promedia y el detalle que aparece en distintos frames se refuerza.</p></div>
-  </div>
-</div></section>
-
-<section class="section" id="versiones"><div class="wrap">
+<section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">El concepto</div><h2>Qué es y por qué existe</h2></div><div class="rich reveal"><p>Superfoto UNO Q es un servicio de superresolución multi-frame que corre íntegramente en una Arduino UNO Q. Captura decenas de frames MJPEG de una cámara IP Webcam, descarta los movidos o mal expuestos, los alinea con precisión subpíxel mediante ECC y los fusiona combinando drizzle, proyección iterativa de retroproyección (IBP) y Richardson-Lucy. Expone una interfaz web, una API HTTP y una CLI, y guarda cada sesión con imagen final, comparativa, referencia y cobertura de frames.</p><p>Está pensado para quien tiene una cámara barata y quiere mostrar fotografía computacional sin enviar imágenes a la nube, y para quien evalúa técnicas de fusión en hardware restringido: la documentación publica la ganancia medida frente a la interpolación bicúbica, no solo el resultado. Su interés está en el método verificable y en las comparativas por sesión. No sustituye una óptica mejor y no incorpora autenticación ni TLS; está declarado como servicio de una sola sesión en red local.</p></div></div></section><section class="section" id="versiones"><div class="wrap">
   <div class="section-head reveal"><div class="kicker">02 — Versiones</div><h2>La historia, completa.</h2><p class="section-sub">Cada carpeta conserva una etapa del proyecto. No se borraron las anteriores: se pusieron en contexto.</p></div>
   <div class="versions"><article class="version reveal">
   <div class="version-top"><h3>superfoto-unoq</h3><span class="count">56 archivos</span></div>
@@ -204,11 +229,11 @@ h2{font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.04em;margin:
   <a href="https://github.com/jmadasme/superfoto-unoq/tree/main/versions/superfoto-unoq" target="_blank" rel="noopener">Ver carpeta <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
 </article></div>
 </div></section>
-<section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">01 — La idea</div><h2>El problema y la solución</h2><p class="section-sub">Qué resuelve y por qué está construido así.</p></div><div class="rich reveal"><div class="card-grid">
+<section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">03 — La idea</div><h2>El problema y la solución</h2><p class="section-sub">Qué resuelve y por qué está construido así.</p></div><div class="rich reveal"><div class="card-grid">
 <div class="card"><h3>El problema</h3><div><div></div><p>Una cámara de celular o de microscopio está limitada por el sensor y la difracción: al ampliar el zoom solo ves el mismo píxel agrandado, con ruido y sin detalle nuevo. El detalle fino se pierde entre píxeles y no se recupera de un único frame.</p></div></div>
 <div class="card"><h3>La solución</h3><div><div></div><p>Capturar miles de frames con micro-desplazamiento subpíxel y fusionarlos: descartar los borrosos (lucky imaging), alinear cada frame a fracciones de píxel y acumular la señal real para recuperar hasta ~2× de resolución lineal (4× en píxeles).</p></div></div>
 </div></div></div></section>
-<section class="section"><div class="wrap"><div class="section-head reveal"><div class="kicker">02 — El recorrido</div><h2>Cómo funciona, paso a paso</h2><p class="section-sub">El recorrido desde el código hasta el resultado.</p></div><div class="rich reveal"><div class="timeline">
+<section class="section"><div class="wrap"><div class="section-head reveal"><div class="kicker">04 — El recorrido</div><h2>Cómo funciona, paso a paso</h2><p class="section-sub">El recorrido desde el código hasta el resultado.</p></div><div class="rich reveal"><div class="timeline">
 <div class="step"><div class="step-n">01</div><h4>Captura</h4><div><p>Recibe frames de IP Webcam (MJPEG), archivo de video, webcam USB o carpeta de imágenes. En la UNO Q, el descubrimiento por sysfs descarta los decoders Venus (/dev/video0/video1) que no son cámaras.</p></div></div>
 <div class="step"><div class="step-n">02</div><h4>Gate de calidad (lucky imaging)</h4><div><p>Varianza del Laplaciano sobre el ROI central (50%): un umbral adaptativo por percentil descarta los frames borrosos y se queda solo con los nítidos.</p></div></div>
 <div class="step"><div class="step-n">03</div><h4>Alineación subpíxel</h4><div><p>phaseCorrelate para el desplazamiento grueso + refinamiento ECC hasta un error medio de ~0.04 px. Sin alinear, la fusión emborrona en lugar de mejorar.</p></div></div>
@@ -216,13 +241,13 @@ h2{font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.04em;margin:
 <div class="step"><div class="step-n">05</div><h4>Refinamiento IBP</h4><div><p>Iterative back-projection: proyecta el resultado a la resolución original, compara con cada frame y corrige el error de forma iterativa.</p></div></div>
 <div class="step"><div class="step-n">06</div><h4>Deconvolución Richardson-Lucy</h4><div><p>Desconvoluciona con una PSF gaussiana (σ=0.6, 15 iteraciones) solo sobre la luminancia en espacio Lab, para no alterar el color.</p></div></div>
 </div></div></div></section>
-<section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">03 — Bajo el capó</div><h2>Cómo está construido</h2><p class="section-sub">Una vista de los componentes principales y cómo se conectan.</p></div><div class="rich reveal"><figure><img src="img/compare_stoma.jpg" alt="Prueba real: un frame bicúbico vs. fusión de 186 frames" loading="lazy"><figcaption>Prueba real de punta a punta: un frame (bicúbico 2×) vs. fusión SuperFoto de 186 frames.</figcaption></figure>
+<section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">05 — Bajo el capó</div><h2>Cómo está construido</h2><p class="section-sub">Una vista de los componentes principales y cómo se conectan.</p></div><div class="rich reveal"><figure><img src="img/compare_stoma.jpg" alt="Prueba real: un frame bicúbico vs. fusión de 186 frames" loading="lazy"><figcaption>Prueba real de punta a punta: un frame (bicúbico 2×) vs. fusión SuperFoto de 186 frames.</figcaption></figure>
 <div class="card-grid">
 <div class="card"><h3>Fuentes</h3><div><p>IP Webcam (MJPEG), video, webcam USB o carpeta. En la UNO Q, sysfs descarta los decoders Venus que no son cámaras.</p></div></div>
 <div class="card"><h3>Servidor HTTP</h3><div><p>stdlib http.server + threading en el puerto 8010. API REST de sesiones y un único worker activo a la vez.</p></div></div>
 <div class="card"><h3>Pipeline SR</h3><div><p>Gate de calidad → alineación subpíxel → fusión drizzle → IBP → deconvolución Richardson-Lucy.</p></div></div>
 </div></div></div></section>
-<section class="section"><div class="wrap"><div class="section-head reveal"><div class="kicker">04 — Lo que lo hace distinto</div><h2>Decisiones de ingeniería</h2><p class="section-sub">Decisiones que hacen que el proyecto sea útil, mantenible y honesto.</p></div><div class="rich reveal"><div class="features">
+<section class="section"><div class="wrap"><div class="section-head reveal"><div class="kicker">06 — Lo que lo hace distinto</div><h2>Decisiones de ingeniería</h2><p class="section-sub">Decisiones que hacen que el proyecto sea útil, mantenible y honesto.</p></div><div class="rich reveal"><div class="features">
 <div class="feature"><h3>Límites honestos</h3><div><p>Hasta ~2× lineal (4× en píxeles). No recupera difracción ni inventa detalle: el zoom 8× es digital y está documentado.</p></div></div>
 <div class="feature"><h3>Lucky imaging adaptativo</h3><div><p>El umbral de nitidez sale de un percentil, no de una constante: se adapta a cada sesión sin tocar parámetros.</p></div></div>
 <div class="feature"><h3>Fusión en uint16</h3><div><p>La acumulación drizzle suma señal en uint16 y lleva un mapa de coverage por píxel para saber dónde hubo datos reales.</p></div></div>
@@ -230,11 +255,11 @@ h2{font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.04em;margin:
 <div class="feature"><h3>Despliegue sin sudo</h3><div><p>tar + ssh (puerto 2222), preserva data/sessions entre deploys y arranca por cron @reboot. El puerto 8000 queda reservado.</p></div></div>
 <div class="feature"><h3>105 pruebas</h3><div><p>pytest cubre MJPEG, reconexión, gate, alineación, fusión uint16, memoria, storage atómico, API, CLI, sketch y UI sin innerHTML.</p></div></div>
 </div></div></div></section>
-<section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">05 — Resultados medidos</div><h2>Lo que se mide, se verifica</h2><p class="section-sub">Sin "magia": ganancias reales y límites claros, medidos sobre la placa.</p></div><div class="rich reveal"><figure><img src="img/compare_stoma_detail.jpg" alt="Detalle 1:1 de la superresolución" loading="lazy"><figcaption>Detalle 1:1 del estoma: bicúbico de un frame vs. SuperFoto de 186 frames.</figcaption></figure>
+<section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">07 — Resultados medidos</div><h2>Lo que se mide, se verifica</h2><p class="section-sub">Sin "magia": ganancias reales y límites claros, medidos sobre la placa.</p></div><div class="rich reveal"><figure><img src="img/compare_stoma_detail.jpg" alt="Detalle 1:1 de la superresolución" loading="lazy"><figcaption>Detalle 1:1 del estoma: bicúbico de un frame vs. SuperFoto de 186 frames.</figcaption></figure>
 <div class="card-grid">
 <div class="card"><h3>Métricas de referencia</h3><div><p>+6,47 dB PSNR (benchmark sintético)<br/>+5,31 dB en la UNO Q (400×300 → 800×600)<br/>SSIM +0,028<br/>487 frames vistos · 186 aceptados<br/>1920×1080 → 3840×2160 (8,3 MP)<br/>shift medio 0,66 px</p></div></div>
 </div></div></div></section>
-<section class="section"><div class="wrap"><div class="section-head reveal"><div class="kicker">06 — Stack y arranque</div><h2>Con qué está construido</h2><p class="section-sub">Tecnologías y herramientas que sostienen el proyecto.</p></div><div class="rich reveal"><p>Arduino UNO Q STM32U585 Debian 13 Python 3 OpenCV NumPy http.server pytest Sin pip ni frameworks web: stdlib + OpenCV + NumPy, instalables con apt en la UNO Q.</p>
+<section class="section"><div class="wrap"><div class="section-head reveal"><div class="kicker">08 — Stack y arranque</div><h2>Con qué está construido</h2><p class="section-sub">Tecnologías y herramientas que sostienen el proyecto.</p></div><div class="rich reveal"><p>Arduino UNO Q STM32U585 Debian 13 Python 3 OpenCV NumPy http.server pytest Sin pip ni frameworks web: stdlib + OpenCV + NumPy, instalables con apt en la UNO Q.</p>
 <p>bash — superfoto-unoq</p>
 <pre><span># En la UNO Q (o local): dependencias con apt, sin pip</span>
 <span>$</span> sudo apt install python3-opencv python3-numpy
@@ -242,15 +267,14 @@ h2{font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.04em;margin:
 <span>$</span> python3 scripts/process_video.py --input video.mp4 --scale 2.0
 <span># Despliega a la placa por ssh (puerto 2222, sin sudo)</span>
 <span>$</span> ./scripts/deploy_unoq.sh</pre></div></div></section>
-<section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">07 — Documentación</div><h2>Todo está escrito</h2><p class="section-sub">Cada decisión, cada límite y cada comando están documentados en el repositorio. Sin folletos: lo que funciona se muestra, lo que no, también.</p></div><div class="rich reveal"><div class="card-grid">
+<section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">09 — Documentación</div><h2>Todo está escrito</h2><p class="section-sub">Cada decisión, cada límite y cada comando están documentados en el repositorio. Sin folletos: lo que funciona se muestra, lo que no, también.</p></div><div class="rich reveal"><div class="card-grid">
 <a class="card" href=""><h3>Guía completa</h3><p>Qué es, cómo funciona, instalación y límites.</p></a>
 <a class="card" href=""><h3>Manual de operación</h3><p>Requisitos, uso, parámetros y diagnóstico.</p></a>
 <a class="card" href=""><h3>Guía de código</h3><p>Arquitectura, módulos y extensión.</p></a>
 <a class="card" href=""><h3>Referencias</h3><p>Documentación externa y buenas prácticas.</p></a>
 <a class="card" href=""><h3>Operación sin sudo</h3><p>Start, stop, logs y arranque automático por cron.</p></a>
 <a class="card" href=""><h3>Límites y alcance</h3><p>Qué puede y qué no puede hacer el pipeline.</p></a>
-</div></div></div></section>
-<section class="cta"><div class="wrap"><div class="cta-box reveal">
+</div></div></div></section><section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">Lo que no funcionó</div><h2>Los tropiezos, documentados</h2><p class="section-sub">Las primeras versiones existen para que estos errores no se repitan: cada una dejó una decisión de diseño verificable.</p></div><div class="fail-grid reveal"><div class="fail"><div class="v">superfoto-unoq</div><h3>Fusión sin ganancia sobre el bicúbico</h3><p>La configuración inicial, basada solo en drizzle y promedio ponderado, daba 23,48 dB de PSNR, por debajo de los 24,34 dB de un único frame interpolado bicúbicamente. Se incorporó proyección iterativa de retroproyección con hasta 32 frames y Richardson-Lucy sobre luminancia; la misma escena subió a 30,81 dB y SSIM 0,9497.</p></div><div class="fail"><div class="v">superfoto-unoq</div><h3>Escena en movimiento sin frames útiles</h3><p>En un video de 50 segundos con la cámara moviéndose se vieron 1250 frames y solo 7 pasaron el control de calidad, con desplazamiento medio de 10,2 px y cobertura insuficiente. En lugar de forzar la fusión se añadió un aviso de escena en movimiento cuando más del 50 % de las alineaciones falla, con un mínimo de 30 frames evaluados.</p></div><div class="fail"><div class="v">superfoto-unoq</div><h3>Contador de drizzle saturado</h3><p>El acumulador de drizzle usaba uint8 y saturaba al sumar muchas exposiciones, lo que corrompía la media ponderada. Se migró a uint16 con tope de 65535 y se agregó una prueba de 400 frames que verifica que el contador no desborda. Es la incidencia I-001 de la bitácora.</p></div></div></div></section><section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">Ficha de evaluación</div><h2>Cómo se mide este proyecto</h2><p class="section-sub">Seis criterios con la misma escala en todo el catálogo, para comparar sin marketing.</p></div><div class="rating-head reveal"><div class="rating-avg">3.8<small>/5</small></div><div><strong>Madurez global</strong><p>Demostración sólida de superresolución multi-frame con métricas publicadas y límites explícitos. Sirve para aprender y evaluar fusión en hardware modesto; no para exponerla como servicio multiusuario.</p></div></div><div class="rating reveal"><div class="rating-row"><div class="rating-name">Madurez</div><div class="rating-bar"><i style="width:80%"></i></div><div class="rating-score">4/5</div><div class="rating-note">Servicio completo con 105 pruebas, auditoría aprobada y sesiones reales de 3840×2160 ejecutadas en la placa.</div></div><div class="rating-row"><div class="rating-name">Reproducibilidad</div><div class="rating-bar"><i style="width:60%"></i></div><div class="rating-score">3/5</div><div class="rating-note">Requiere OpenCV, una fuente MJPEG accesible y los scripts de despliegue; el resultado depende de cámara y escena.</div></div><div class="rating-row"><div class="rating-name">Documentación</div><div class="rating-bar"><i style="width:80%"></i></div><div class="rating-score">4/5</div><div class="rating-note">README extenso, bitácora con métricas, datasheet, guía de desarrollador y referencias sobre fusión multi-frame.</div></div><div class="rating-row"><div class="rating-name">Honestidad de límites</div><div class="rating-bar"><i style="width:100%"></i></div><div class="rating-score">5/5</div><div class="rating-note">Publica PSNR y SSIM por sesión, la comparativa bicúbica y los casos donde la mejora es marginal.</div></div><div class="rating-row"><div class="rating-name">Valor demostrativo</div><div class="rating-bar"><i style="width:80%"></i></div><div class="rating-score">4/5</div><div class="rating-note">Cuantifica la ganancia de la fusión: +6,47 dB en laboratorio y +5,31 dB en la placa.</div></div><div class="rating-row"><div class="rating-name">Facilidad de despliegue</div><div class="rating-bar"><i style="width:60%"></i></div><div class="rating-score">3/5</div><div class="rating-note">Despliegue por script y ejecución local; sin autenticación, sin TLS y con una sola sesión activa.</div></div></div></div></section><section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">Preguntas típicas</div><h2>Lo que suelen preguntar</h2></div><div class="faq reveal"><details><summary>¿Sirve cualquier cámara?</summary><p>Cualquier fuente MJPEG o webcam USB que OpenCV pueda abrir; el flujo probado es IP Webcam en Android.</p></details><details><summary>¿Cuántos frames hacen falta?</summary><p>Entre 10 y 30 suele ser el punto útil. Pasado ese número el costo de postproceso crece más que la mejora.</p></details><details><summary>¿Aumenta la resolución real?</summary><p>Mejora el detalle y baja el ruido, pero no reemplaza una óptica mejor. La ganancia se mide y se publica con cada sesión.</p></details><details><summary>¿Dónde corre?</summary><p>Todo en la UNO Q: captura, alineación, fusión y servicio web. No se envía nada a Internet.</p></details></div></div></section><section class="cta"><div class="wrap"><div class="cta-box reveal">
   <div class="kicker">Siguiente paso</div><h2>¿Te animás?</h2>
   <p>Usá esta familia como base para superfoto uno q. Está documentada para que puedas entenderla, ejecutarla y continuarla sin adivinar.</p>
   <div class="hero-actions" style="justify-content:center"><a class="btn btn-primary" href="https://github.com/jmadasme/superfoto-unoq" target="_blank" rel="noopener">Abrir el repositorio <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-ghost" href="/arduino-unoq/">Ver más de Arduino</a></div>
