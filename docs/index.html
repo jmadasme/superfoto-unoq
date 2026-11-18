@@ -191,12 +191,14 @@ h2{font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.04em;margin:
 
 </style>
 <link rel="stylesheet" href="assets/community.css?v=1">
+<link href="rec/player.css?v=1" rel="stylesheet"/>
 </head>
 <body>
 <header class="nav"><div class="wrap nav-in">
   <a class="brand" href="/"><span class="brand-mark"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 9 5-9 5-9-5 9-5z"/><path d="m3 12 9 5 9-5M3 17l9 5 9-5"/></svg></span><span>jmadasme<span style="color:var(--accent)">.</span>portfolio</span></a>
   <nav class="nav-links">
-    <a href="#proyecto">Proyecto</a><a href="#versiones">Versiones</a><a href="#stack">Stack</a><a href="#docs">Docs</a><a href="#comunidad">Comunidad</a>
+    <a href="#proyecto">Proyecto</a><a href="#versiones">Versiones</a><a href="#stack">Stack</a><a href="#video">Video</a>
+<a href="#docs">Docs</a><a href="#comunidad">Comunidad</a>
     <a class="btn btn-ghost" style="padding:9px 15px" href="/arduino-unoq/">← Arduino</a>
   </nav>
 </div></header>
@@ -221,7 +223,46 @@ h2{font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.04em;margin:
 
 <section class="stats"><div class="wrap stats-grid"><div class="stat"><div class="stat-num">1</div><div class="stat-label">versión</div></div><div class="stat"><div class="stat-num">1080p</div><div class="stat-label">entrada</div></div><div class="stat"><div class="stat-num">1620×2880</div><div class="stat-label">salida</div></div><div class="stat"><div class="stat-num">0</div><div class="stat-label">nube</div></div></div></section>
 
-<section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">El concepto</div><h2>Qué es y por qué existe</h2></div><div class="rich reveal"><p>Superfoto UNO Q es un servicio de superresolución multi-frame que corre íntegramente en una Arduino UNO Q. Captura decenas de frames MJPEG de una cámara IP Webcam, descarta los movidos o mal expuestos, los alinea con precisión subpíxel mediante ECC y los fusiona combinando drizzle, proyección iterativa de retroproyección (IBP) y Richardson-Lucy. Expone una interfaz web, una API HTTP y una CLI, y guarda cada sesión con imagen final, comparativa, referencia y cobertura de frames.</p><p>Está pensado para quien tiene una cámara barata y quiere mostrar fotografía computacional sin enviar imágenes a la nube, y para quien evalúa técnicas de fusión en hardware restringido: la documentación publica la ganancia medida frente a la interpolación bicúbica, no solo el resultado. Su interés está en el método verificable y en las comparativas por sesión. No sustituye una óptica mejor y no incorpora autenticación ni TLS; está declarado como servicio de una sola sesión en red local.</p></div></div></section><section class="section" id="versiones"><div class="wrap">
+<section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">El concepto</div><h2>Qué es y por qué existe</h2></div><div class="rich reveal"><p>Superfoto UNO Q es un servicio de superresolución multi-frame que corre íntegramente en una Arduino UNO Q. Captura decenas de frames MJPEG de una cámara IP Webcam, descarta los movidos o mal expuestos, los alinea con precisión subpíxel mediante ECC y los fusiona combinando drizzle, proyección iterativa de retroproyección (IBP) y Richardson-Lucy. Expone una interfaz web, una API HTTP y una CLI, y guarda cada sesión con imagen final, comparativa, referencia y cobertura de frames.</p><p>Está pensado para quien tiene una cámara barata y quiere mostrar fotografía computacional sin enviar imágenes a la nube, y para quien evalúa técnicas de fusión en hardware restringido: la documentación publica la ganancia medida frente a la interpolación bicúbica, no solo el resultado. Su interés está en el método verificable y en las comparativas por sesión. No sustituye una óptica mejor y no incorpora autenticación ni TLS; está declarado como servicio de una sola sesión en red local.</p></div></div></section>
+<section class="section tight rec-section" id="video" style="--accent:#2E7DFF;--accent2:#14F195">
+<div class="wrap">
+<div class="rec-kicker">REC · VIDEO · 2:41</div>
+<h2 class="rec-h2">Superfoto: muchas fotos, una imagen mejor</h2>
+<p class="rec-lead">Toma decenas de frames de una cámara IP Webcam, descarta los movidos o quemados, alinea con precisión subpíxel y acumula para reducir ruido y ganar detalle. UI web, API y CLI sobre la misma sesión.</p>
+<div class="rec-banner">
+<span class="rec-banner-icon">📋</span>
+<strong>Puedes copiar y pegar los comandos del video desde el video !!!</strong>
+<span>Pausá, seleccioná el texto de la terminal y copiá.</span>
+</div>
+<div class="rec-shell">
+<div class="rec-bar"><i></i><i></i><i></i><span class="rec-title">Superfoto: muchas fotos, una imagen mejor · asciinema</span><span class="rec-rec"><b></b>REC</span></div>
+<div class="rec-screen-wrap">
+<div class="rec-screen" id="rec-screen"></div>
+<div class="rec-poster" id="rec-poster">
+<div class="rec-kicker">ASCIINEMA · 2:41</div>
+<h3>Superfoto: muchas fotos, una imagen mejor</h3>
+<p>Toma decenas de frames de una cámara IP Webcam, descarta los movidos o quemados, alinea con precisión subpíxel y acumula para reducir ruido y ganar detalle. UI web, API y CLI sobre la misma sesión.</p>
+<div class="rec-poster-meta">superfoto-unoq · código real</div>
+<button class="rec-btn rec-primary" id="rec-start" type="button">▶ Reproducir</button>
+</div>
+</div>
+<div class="rec-controls">
+<button class="rec-btn rec-primary" id="rec-play" type="button">▶ Reproducir</button>
+<button class="rec-btn" id="rec-restart" type="button">↺ Reiniciar</button>
+<input class="rec-progress" id="rec-range" type="range" min="0" max="1000" value="0" aria-label="Progreso"/>
+<span class="rec-time" id="rec-time">0:00 / 2:41</span>
+<select class="rec-speed" id="rec-speed" aria-label="Velocidad"><option value="1">1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="2">2×</option></select>
+<button class="rec-btn" id="rec-full" type="button" title="Pantalla completa">⛶</button>
+<button class="rec-btn" id="rec-copy" type="button">⧉ Copiar comandos</button>
+<a class="rec-download" href="rec/superfoto-unoq.cast" download>descargar .cast</a>
+</div>
+</div>
+<p class="rec-note">Los fragmentos son del código real de versions/superfoto-unoq. La ganancia depende de la fuente; el proyecto admite una sesión activa y no incluye autenticación ni TLS.</p>
+<div class="rec-chapters"><span class="rec-chip"><b>0:06</b> EL PROBLEMA</span><span class="rec-chip"><b>0:21</b> CALIDAD</span><span class="rec-chip"><b>0:35</b> ALINEACIÓN</span><span class="rec-chip"><b>0:51</b> ACUMULACIÓN</span><span class="rec-chip"><b>1:08</b> SESIÓN</span><span class="rec-chip"><b>1:23</b> PESOS</span><span class="rec-chip"><b>1:37</b> REFINADO</span><span class="rec-chip"><b>1:53</b> COBERTURA</span><span class="rec-chip"><b>2:05</b> PERSISTENCIA</span><span class="rec-chip"><b>2:18</b> API</span></div>
+</div>
+</section>
+
+<section class="section" id="versiones"><div class="wrap">
   <div class="section-head reveal"><div class="kicker">02 — Versiones</div><h2>La historia, completa.</h2><p class="section-sub">Cada carpeta conserva una etapa del proyecto. No se borraron las anteriores: se pusieron en contexto.</p></div>
   <div class="versions"><article class="version reveal">
   <div class="version-top"><h3>superfoto-unoq</h3><span class="count">56 archivos</span></div>
@@ -287,5 +328,7 @@ h2{font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.04em;margin:
 <script>window.PORTFOLIO_COMMUNITY={account:"jmadasme",repo:"superfoto-unoq",coinNamespace:"jmadasme-superfoto-unoq-coins-v1",faqs:[{"q": "¿Sirve cualquier cámara?", "a": "Cualquier fuente MJPEG o webcam USB que OpenCV pueda abrir; el flujo probado es IP Webcam en Android."}, {"q": "¿Cuántos frames hacen falta?", "a": "Entre 10 y 30 suele ser el punto útil. Pasado ese número el costo de postproceso crece más que la mejora."}, {"q": "¿Aumenta la resolución real?", "a": "Mejora el detalle y baja el ruido, pero no reemplaza una óptica mejor. La ganancia se mide y se publica con cada sesión."}, {"q": "¿Dónde corre?", "a": "Todo en la UNO Q: captura, alineación, fusión y servicio web. No se envía nada a Internet."}]};</script>
 <script src="assets/community.js?v=2" defer></script>
 
+<script defer src="rec/superfoto-unoq.cast.js?v=1"></script>
+<script defer src="rec/player.js?v=1"></script>
 </body>
 </html>
